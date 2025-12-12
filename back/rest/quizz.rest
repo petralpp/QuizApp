@@ -1,0 +1,10 @@
+GET http://localhost:3000/api/quizz
+
+###
+
+GET http://localhost:3000/api/quizz/f4b3fb69-0918-4838-b01e-075bc9fccdd9
+
+###
+
+POST http://localhost:3000/api/quizz Content-Type: application/json
+{}
