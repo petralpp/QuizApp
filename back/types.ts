@@ -4,7 +4,12 @@ export interface Quizz {
   questions: object[];
 }
 
-export interface Answers {
+export interface CorrectAnswer {
+  question: string;
+  answer: string;
+}
+
+export interface QuizzAnswers {
   name: string;
-  answers: object[];
+  answers: CorrectAnswer[];
 }

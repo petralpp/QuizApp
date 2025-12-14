@@ -1,10 +1,11 @@
 import { questions, correctAnswers } from "../quizzData";
+import { CorrectAnswer } from "../types";
 
 const getQuizzes = (): object => {
   return questions;
 };
 
-const getAnswers = (id: string): object[] | null => {
+const getAnswers = (id: string): CorrectAnswer[] | null => {
   const quizz = questions.find((element) => element.id === id);
   if (!quizz) {
     return null;

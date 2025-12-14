@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import type { Quizz } from "../types";
+import type { CorrectAnswer, Quizz } from "../types";
 import QuizzQuestion from "./QuizzQuestion";
+import quizzService from "../services/quizzService";
+import Result from "./Result";
 
 interface Props {
   currentQuizz: Quizz;
@@ -9,6 +11,7 @@ interface Props {
 const QuizzDisplay = ({ currentQuizz }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [playerAnswers, setPlayerAnswers] = useState<string[]>([]);
+  const [correctAnswers, setCorrectAnswers] = useState<CorrectAnswer[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<string>("");
   const [currentOptions, setCurrentOptions] = useState<string[]>([]);
   const [quizzOn, setQuizzOn] = useState(true);
@@ -25,10 +28,16 @@ const QuizzDisplay = ({ currentQuizz }: Props) => {
 
     const index = currentIndex + 1;
     if (index === currentQuizz.questions.length) {
+      getResults();
       setQuizzOn(false);
     } else {
       setCurrentIndex(index);
     }
+  };
+
+  const getResults = async () => {
+    const rightAnswers = await quizzService.getAnswers(currentQuizz.id);
+    setCorrectAnswers(rightAnswers);
   };
 
   return (
@@ -41,7 +50,9 @@ const QuizzDisplay = ({ currentQuizz }: Props) => {
           sendAnswer={handleAnswer}
         />
       ) : (
-        <p>End! Your results:</p>
+        <div>
+          <Result playerAnswers={playerAnswers} rightAnswers={correctAnswers} />
+        </div>
       )}
     </div>
   );

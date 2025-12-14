@@ -1,4 +1,4 @@
-import { Quizz, Answers } from "./types";
+import { Quizz, QuizzAnswers } from "./types";
 
 export const questions: Quizz[] = [
   {
@@ -22,18 +22,21 @@ export const questions: Quizz[] = [
   },
 ];
 
-export const correctAnswers: Answers[] = [
+export const correctAnswers: QuizzAnswers[] = [
   {
     name: "Stardew Valley",
     answers: [
       {
-        "What is the name of the town the game sets in?": "Pelican Town",
+        question: "What is the name of the town the game sets in?",
+        answer: "Pelican Town",
       },
       {
-        "What is the name of Pierre's wife?": "Caroline",
+        question: "What is the name of Pierre's wife?",
+        answer: "Caroline",
       },
       {
-        "What vice does Sebastian have?": "smoking",
+        question: "What vice does Sebastian have?",
+        answer: "smoking",
       },
     ],
   },

@@ -1,10 +1,14 @@
 import axios from "axios";
-import type { Quizz } from "../types";
+import type { CorrectAnswer, Quizz } from "../types";
 
 const getAllQuizzes = async () => {
-  const response = await axios.get<object[]>("/api/quizz");
-  const quizzData = response.data as Quizz[];
-  return quizzData;
+  const response = await axios.get<Quizz[]>("/api/quizz");
+  return response.data;
 };
 
-export default { getAllQuizzes };
+const getAnswers = async (id: string) => {
+  const response = await axios.get<CorrectAnswer[]>(`/api/quizz/${id}`);
+  return response.data;
+};
+
+export default { getAllQuizzes, getAnswers };
