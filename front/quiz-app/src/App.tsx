@@ -1,50 +1,48 @@
 import { useState, useEffect } from "react";
-import type { Quizz } from "./types";
-import quizzService from "./services/quizzService";
+import type { Quiz } from "./types";
+import quizService from "./services/quizService";
 
-import QuizzList from "./components/QuizzList";
-import QuizzDisplay from "./components/QuizzDisplay";
+import QuizList from "./components/QuizList";
+import QuizDisplay from "./components/QuizDisplay";
 
 function App() {
-  const [selectedQuizz, setSelectedQuizz] = useState<string>("");
-  const [quizzData, setQuizzData] = useState<Quizz[] | null>(null);
-  const [currentQuizz, setCurrentQuizz] = useState<Quizz | null>(null);
+  const [selectedQuiz, setSelectedQuiz] = useState<string>("");
+  const [quizData, setQuizData] = useState<Quiz[] | null>(null);
+  const [currentQuiz, setCurrentQuiz] = useState<Quiz | null>(null);
 
   useEffect(() => {
-    quizzService.getAllQuizzes().then((data) => {
-      setQuizzData(data);
+    quizService.getAllQuizzes().then((data) => {
+      setQuizData(data);
     });
   }, []);
 
-  const startQuizz = () => {
-    if (quizzData) {
-      const quizzElement = quizzData.find(
-        (quizz) => quizz.name === selectedQuizz
-      );
-      if (quizzElement) {
-        setCurrentQuizz(quizzElement);
+  const startQuiz = () => {
+    if (quizData) {
+      const quizElement = quizData.find((quizz) => quizz.name === selectedQuiz);
+      if (quizElement) {
+        setCurrentQuiz(quizElement);
       }
     }
   };
 
-  const endQuizz = () => {
-    setCurrentQuizz(null);
+  const endQuiz = () => {
+    setCurrentQuiz(null);
   };
 
   return (
     <>
-      {currentQuizz ? (
+      {currentQuiz ? (
         <div>
-          <QuizzDisplay currentQuizz={currentQuizz} quit={endQuizz} />
+          <QuizDisplay currentQuiz={currentQuiz} quit={endQuiz} />
         </div>
       ) : (
         <div>
           <h1>Quiz App!</h1>
-          <QuizzList list={quizzData} setQuizz={setSelectedQuizz} />
-          <div>Selected: {selectedQuizz}</div>
+          <QuizList list={quizData} setQuiz={setSelectedQuiz} />
+          <div>Selected: {selectedQuiz}</div>
           <div>
-            {selectedQuizz !== "" ? (
-              <button onClick={startQuizz}>Play</button>
+            {selectedQuiz !== "" ? (
+              <button onClick={startQuiz}>Play</button>
             ) : (
               <button disabled>Play</button>
             )}

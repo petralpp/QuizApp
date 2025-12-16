@@ -1,19 +1,19 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { Quizz } from "../types";
+import type { Quiz } from "../types";
 
 interface Props {
-  list: Quizz[] | null;
-  setQuizz: Dispatch<SetStateAction<string>>;
+  list: Quiz[] | null;
+  setQuiz: Dispatch<SetStateAction<string>>;
 }
 
-const QuizzList = ({ list, setQuizz }: Props) => {
+const QuizList = ({ list, setQuiz }: Props) => {
   const handleClick = (name: string) => {
-    setQuizz(name);
+    setQuiz(name);
   };
 
   return (
     <div>
-      <h1>Choose your quizz</h1>
+      <h1>Choose your quiz</h1>
       {list ? (
         <ol>
           {list.map((el, i) => (
@@ -27,4 +27,4 @@ const QuizzList = ({ list, setQuizz }: Props) => {
   );
 };
 
-export default QuizzList;
+export default QuizList;

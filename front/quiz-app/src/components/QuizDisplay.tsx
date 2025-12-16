@@ -1,57 +1,57 @@
 import { useEffect, useState } from "react";
-import type { CorrectAnswer, Quizz } from "../types";
-import QuizzQuestion from "./QuizzQuestion";
-import quizzService from "../services/quizzService";
+import type { CorrectAnswer, Quiz } from "../types";
+import QuizQuestion from "./QuizQuestion";
+import quizService from "../services/quizService";
 import Result from "./Result";
 
 interface Props {
-  currentQuizz: Quizz;
+  currentQuiz: Quiz;
   quit(): void;
 }
 
-const QuizzDisplay = ({ currentQuizz, quit }: Props) => {
+const QuizDisplay = ({ currentQuiz, quit }: Props) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [playerAnswers, setPlayerAnswers] = useState<string[]>([]);
   const [correctAnswers, setCorrectAnswers] = useState<CorrectAnswer[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<string>("");
   const [currentOptions, setCurrentOptions] = useState<string[]>([]);
-  const [quizzOn, setQuizzOn] = useState<boolean>(true);
+  const [quizOn, setQuizOn] = useState<boolean>(true);
 
   useEffect(() => {
-    const question = currentQuizz.questions[currentIndex].question;
-    const options = currentQuizz.questions[currentIndex].choices;
+    const question = currentQuiz.questions[currentIndex].question;
+    const options = currentQuiz.questions[currentIndex].choices;
     setCurrentQuestion(question);
     setCurrentOptions(options);
-  }, [currentIndex, currentQuizz.questions]);
+  }, [currentIndex, currentQuiz.questions]);
 
   const handleAnswer = (answer: string) => {
     setPlayerAnswers(playerAnswers.concat(answer));
 
     const index = currentIndex + 1;
-    if (index === currentQuizz.questions.length) {
+    if (index === currentQuiz.questions.length) {
       getResults();
-      setQuizzOn(false);
+      setQuizOn(false);
     } else {
       setCurrentIndex(index);
     }
   };
 
   const getResults = async () => {
-    const rightAnswers = await quizzService.getAnswers(currentQuizz.id);
+    const rightAnswers = await quizService.getAnswers(currentQuiz.id);
     setCorrectAnswers(rightAnswers);
   };
 
   const handleRestart = () => {
     setCurrentIndex(0);
     setPlayerAnswers([]);
-    setQuizzOn(true);
+    setQuizOn(true);
   };
 
   return (
     <div>
-      <h2>{currentQuizz.name}</h2>
-      {quizzOn ? (
-        <QuizzQuestion
+      <h2>{currentQuiz.name}</h2>
+      {quizOn ? (
+        <QuizQuestion
           index={currentIndex + 1}
           question={currentQuestion}
           options={currentOptions}
@@ -68,4 +68,4 @@ const QuizzDisplay = ({ currentQuizz, quit }: Props) => {
   );
 };
 
-export default QuizzDisplay;
+export default QuizDisplay;

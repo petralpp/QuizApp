@@ -1,17 +1,17 @@
-export interface Quizz {
+export interface Quiz {
   id: string;
   name: string;
   description: string;
-  questions: QuizzQuestions[];
+  questions: QuizQuestions[];
 }
 
-export interface QuizzQuestions {
+export interface QuizQuestions {
   question: string;
   choices: string[];
 }
 
-export interface QuizzAnswers {
-  quizzName: string;
+export interface QuizAnswers {
+  quizName: string;
   answers: CorrectAnswer[];
 }
 

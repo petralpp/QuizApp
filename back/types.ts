@@ -1,11 +1,11 @@
-export interface Quizz {
+export interface Quiz {
   id: string;
   name: string;
   description: string;
-  questions: QuizzQuestions[];
+  questions: QuizQuestions[];
 }
 
-export interface QuizzQuestions {
+export interface QuizQuestions {
   question: string;
   choices: string[];
 }
@@ -15,7 +15,7 @@ export interface CorrectAnswer {
   answer: string;
 }
 
-export interface QuizzAnswers {
+export interface QuizAnswers {
   quizzName: string;
   answers: CorrectAnswer[];
 }

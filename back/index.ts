@@ -1,5 +1,5 @@
 import express from "express";
-import quizzRouter from "./routes/quizz";
+import quizRouter from "./routes/quiz";
 const app = express();
 app.use(express.json());
 
@@ -10,7 +10,7 @@ app.get("/ping", (_req, res) => {
   res.send("pong");
 });
 
-app.use("/api/quizz", quizzRouter);
+app.use("/api/quiz", quizRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

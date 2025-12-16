@@ -1,6 +1,6 @@
-import { Quizz, QuizzAnswers } from "./types";
+import { Quiz, QuizAnswers } from "./types";
 
-export const questions: Quizz[] = [
+export const questions: Quiz[] = [
   {
     id: "f4b3fb69-0918-4838-b01e-075bc9fccdd9",
     name: "Stardew Valley",
@@ -111,7 +111,7 @@ export const questions: Quizz[] = [
   },
 ];
 
-export const correctAnswers: QuizzAnswers[] = [
+export const correctAnswers: QuizAnswers[] = [
   {
     quizzName: "Stardew Valley",
     answers: [
