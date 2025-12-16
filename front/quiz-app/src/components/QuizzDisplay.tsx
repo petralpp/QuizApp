@@ -40,6 +40,12 @@ const QuizzDisplay = ({ currentQuizz }: Props) => {
     setCorrectAnswers(rightAnswers);
   };
 
+  const handleRestart = () => {
+    setCurrentIndex(0);
+    setPlayerAnswers([]);
+    setQuizzOn(true);
+  };
+
   return (
     <div>
       <h2>{currentQuizz.name}</h2>
@@ -52,6 +58,8 @@ const QuizzDisplay = ({ currentQuizz }: Props) => {
       ) : (
         <div>
           <Result playerAnswers={playerAnswers} rightAnswers={correctAnswers} />
+          <button>Quit</button>
+          <button onClick={handleRestart}>Try again</button>
         </div>
       )}
     </div>
