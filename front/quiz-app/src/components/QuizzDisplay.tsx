@@ -6,9 +6,10 @@ import Result from "./Result";
 
 interface Props {
   currentQuizz: Quizz;
+  quit(): void;
 }
 
-const QuizzDisplay = ({ currentQuizz }: Props) => {
+const QuizzDisplay = ({ currentQuizz, quit }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [playerAnswers, setPlayerAnswers] = useState<string[]>([]);
   const [correctAnswers, setCorrectAnswers] = useState<CorrectAnswer[]>([]);
@@ -58,7 +59,7 @@ const QuizzDisplay = ({ currentQuizz }: Props) => {
       ) : (
         <div>
           <Result playerAnswers={playerAnswers} rightAnswers={correctAnswers} />
-          <button>Quit</button>
+          <button onClick={quit}>Quit</button>
           <button onClick={handleRestart}>Try again</button>
         </div>
       )}

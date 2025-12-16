@@ -27,11 +27,15 @@ function App() {
     }
   };
 
+  const endQuizz = () => {
+    setCurrentQuizz(null);
+  };
+
   return (
     <>
       {currentQuizz ? (
         <div>
-          <QuizzDisplay currentQuizz={currentQuizz} />
+          <QuizzDisplay currentQuizz={currentQuizz} quit={endQuizz} />
         </div>
       ) : (
         <div>

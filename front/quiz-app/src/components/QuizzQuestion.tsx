@@ -12,6 +12,7 @@ const QuizzQuestion = ({ question, options, sendAnswer }: Props) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     sendAnswer(answer);
+    setAnswer("");
   };
 
   const handleChange = (name: string) => {
@@ -34,7 +35,11 @@ const QuizzQuestion = ({ question, options, sendAnswer }: Props) => {
             </label>
           </div>
         ))}
-        <button type="submit">Next</button>
+        {answer ? (
+          <button type="submit">Next</button>
+        ) : (
+          <button disabled>Next</button>
+        )}
       </form>
     </div>
   );
