@@ -10,12 +10,12 @@ interface Props {
 }
 
 const QuizzDisplay = ({ currentQuizz, quit }: Props) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [playerAnswers, setPlayerAnswers] = useState<string[]>([]);
   const [correctAnswers, setCorrectAnswers] = useState<CorrectAnswer[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<string>("");
   const [currentOptions, setCurrentOptions] = useState<string[]>([]);
-  const [quizzOn, setQuizzOn] = useState(true);
+  const [quizzOn, setQuizzOn] = useState<boolean>(true);
 
   useEffect(() => {
     const question = Object.keys(currentQuizz.questions[currentIndex])[0];

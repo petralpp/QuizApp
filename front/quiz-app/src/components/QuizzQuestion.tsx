@@ -7,7 +7,7 @@ interface Props {
 }
 
 const QuizzQuestion = ({ question, options, sendAnswer }: Props) => {
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState<string>("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -15,8 +15,8 @@ const QuizzQuestion = ({ question, options, sendAnswer }: Props) => {
     setAnswer("");
   };
 
-  const handleChange = (name: string) => {
-    setAnswer(name);
+  const handleChange = (text: string) => {
+    setAnswer(text);
   };
 
   return (

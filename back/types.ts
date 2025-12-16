@@ -1,6 +1,7 @@
 export interface Quizz {
   id: string;
   name: string;
+  description: string;
   questions: object[];
 }
 
