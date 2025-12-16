@@ -52,6 +52,7 @@ const QuizzDisplay = ({ currentQuizz, quit }: Props) => {
       <h2>{currentQuizz.name}</h2>
       {quizzOn ? (
         <QuizzQuestion
+          index={currentIndex + 1}
           question={currentQuestion}
           options={currentOptions}
           sendAnswer={handleAnswer}

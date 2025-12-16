@@ -1,12 +1,13 @@
 import { useState, type FormEvent } from "react";
 
 interface Props {
+  index: number;
   question: string;
   options: string[];
   sendAnswer(answer: string): void;
 }
 
-const QuizzQuestion = ({ question, options, sendAnswer }: Props) => {
+const QuizzQuestion = ({ index, question, options, sendAnswer }: Props) => {
   const [answer, setAnswer] = useState<string>("");
 
   const handleSubmit = (e: FormEvent) => {
@@ -21,7 +22,9 @@ const QuizzQuestion = ({ question, options, sendAnswer }: Props) => {
 
   return (
     <div>
-      <h3>{question}</h3>
+      <h3>
+        {index}. {question}
+      </h3>
       <form onSubmit={handleSubmit}>
         {options.map((option) => (
           <div key={option}>
