@@ -8,23 +8,24 @@ export const questions: Quizz[] = [
       "Think you're a pro farmer? Test your knowledge in these 18 questions! (Note: Spoilers ahead!)",
     questions: [
       {
-        "What is the name of the town the game sets in?": [
-          "Pelican Town",
-          "Whale Valley",
-          "Bear City",
-        ],
+        question: "What is the name of the town the game sets in?",
+        choices: ["Pelican Town", "Whale Valley", "Bear City"],
       },
       {
-        "Who is married to Pierre?": ["Robin", "Madeline", "Caroline"],
+        question: "Who is married to Pierre?",
+        choices: ["Robin", "Madeline", "Caroline"],
       },
       {
-        "What vice does Sebastian have?": ["Gambling", "Smoking", "GTA"],
+        question: "What vice does Sebastian have?",
+        choices: ["Gambling", "Smoking", "GTA"],
       },
       {
-        "Who runs the Stardrop Saloon?": ["Gil", "Gunther", "Gus", "Morris"],
+        question: "Who runs the Stardrop Saloon?",
+        choices: ["Gil", "Gunther", "Gus", "Morris"],
       },
       {
-        "Which crop is NOT required for the Quality Crops Bundle?": [
+        question: "Which crop is NOT required for the Quality Crops Bundle?",
+        choices: [
           "Parsnip",
           "Melon",
           "Pumpkin",
@@ -33,7 +34,8 @@ export const questions: Quizz[] = [
         ],
       },
       {
-        "How do you unlock access to the Calico Desert?": [
+        question: "How do you unlock access to the Calico Desert?",
+        choices: [
           "Repair the bus",
           "Complete the Vault bundles",
           "Reach level 120 in the mines",
@@ -41,36 +43,25 @@ export const questions: Quizz[] = [
         ],
       },
       {
-        "What is the deepest level of the Pelican Town Mines?": [
-          "100",
-          "110",
-          "120",
-          "150",
-        ],
+        question: "What is the deepest level of the Pelican Town Mines?",
+        choices: ["100", "110", "120", "150"],
       },
       {
-        "Which villager gives you the Tea Sapling recipe?": [
-          "Caroline",
-          "Evelyn",
-          "Leah",
-          "Robin",
-        ],
+        question: "Which villager gives you the Tea Sapling recipe?",
+        choices: ["Caroline", "Evelyn", "Leah", "Robin"],
       },
       {
-        "In what season does Starfruit grow?": [
-          "Spring",
-          "Summer",
-          "Fall",
-          "Winter",
-          "Any",
-        ],
+        question: "In what season does Starfruit grow?",
+        choices: ["Spring", "Summer", "Fall", "Winter", "Any"],
       },
       {
-        "What item must be placed inside Grandpa's Shrine to receive the Statue of Perfection?":
-          ["Diamond", "Prismatic Shard", "Iridium Bar", "Ancient Fruit"],
+        question:
+          "What item must be placed inside Grandpa's Shrine to receive the Statue of Perfection?",
+        choices: ["Diamond", "Prismatic Shard", "Iridium Bar", "Ancient Fruit"],
       },
       {
-        "What happens when you give a villager a hated gift?": [
+        question: "What happens when you give a villager a hated gift?",
+        choices: [
           "Friendship stays the same",
           "The gift is returned",
           "Friendship decreases",
@@ -78,31 +69,20 @@ export const questions: Quizz[] = [
         ],
       },
       {
-        "Who is the mysterious character living in the sewers?": [
-          "The Dwarf",
-          "Linus",
-          "Mr. Qi",
-          "Krobus",
-        ],
+        question: "Who is the mysterious character living in the sewers?",
+        choices: ["The Dwarf", "Linus", "Mr. Qi", "Krobus"],
       },
       {
-        "Which profession can you choose at Farming level 5?": [
-          "Rancher",
-          "Artisan",
-          "Gatherer",
-          "Fisher",
-        ],
+        question: "Which profession can you choose at Farming level 5?",
+        choices: ["Rancher", "Artisan", "Gatherer", "Fisher"],
       },
       {
-        "Which item permanently increases your maximum energy?": [
-          "Life Elixir",
-          "Energy Tonic",
-          "Stardrop",
-          "Iridium Fruit",
-        ],
+        question: "Which item permanently increases your maximum energy?",
+        choices: ["Life Elixir", "Energy Tonic", "Stardrop", "Iridium Fruit"],
       },
       {
-        "Which festival takes place on Fall 16?": [
+        question: "Which festival takes place on Fall 16?",
+        choices: [
           "Spirit's Eve",
           "Stardew Valley Fair",
           "Festival of Ice",
@@ -110,7 +90,8 @@ export const questions: Quizz[] = [
         ],
       },
       {
-        "Which festival includes a mermaid show?": [
+        question: "Which festival includes a mermaid show?",
+        choices: [
           "Luau",
           "Dance of the Moonlight Jellies",
           "Night Market",
@@ -118,7 +99,8 @@ export const questions: Quizz[] = [
         ],
       },
       {
-        "How do you unlock Ginger Island?": [
+        question: "How do you unlock Ginger Island?",
+        choices: [
           "Finish the Community Center",
           "Complete the Skull Cavern",
           "Reach 10 hearts with Willy",
@@ -131,7 +113,7 @@ export const questions: Quizz[] = [
 
 export const correctAnswers: QuizzAnswers[] = [
   {
-    name: "Stardew Valley",
+    quizzName: "Stardew Valley",
     answers: [
       {
         question: "What is the name of the town the game sets in?",

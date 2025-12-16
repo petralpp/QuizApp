@@ -18,8 +18,8 @@ const QuizzDisplay = ({ currentQuizz, quit }: Props) => {
   const [quizzOn, setQuizzOn] = useState<boolean>(true);
 
   useEffect(() => {
-    const question = Object.keys(currentQuizz.questions[currentIndex])[0];
-    const options = Object.values(currentQuizz.questions[currentIndex])[0];
+    const question = currentQuizz.questions[currentIndex].question;
+    const options = currentQuizz.questions[currentIndex].choices;
     setCurrentQuestion(question);
     setCurrentOptions(options);
   }, [currentIndex, currentQuizz.questions]);

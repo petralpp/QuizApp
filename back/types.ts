@@ -2,7 +2,12 @@ export interface Quizz {
   id: string;
   name: string;
   description: string;
-  questions: object[];
+  questions: QuizzQuestions[];
+}
+
+export interface QuizzQuestions {
+  question: string;
+  choices: string[];
 }
 
 export interface CorrectAnswer {
@@ -11,6 +16,6 @@ export interface CorrectAnswer {
 }
 
 export interface QuizzAnswers {
-  name: string;
+  quizzName: string;
   answers: CorrectAnswer[];
 }
