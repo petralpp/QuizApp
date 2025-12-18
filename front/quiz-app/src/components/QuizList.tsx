@@ -1,27 +1,44 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { Quiz } from "../types";
+import type { Quiz, QuizDescription } from "../types";
 
 interface Props {
   list: Quiz[] | null;
-  setQuiz: Dispatch<SetStateAction<string>>;
+  setQuiz: Dispatch<SetStateAction<QuizDescription>>;
+  toggleOverlay(): void;
 }
 
-const QuizList = ({ list, setQuiz }: Props) => {
+const QuizList = ({ list, setQuiz, toggleOverlay }: Props) => {
   const handleClick = (name: string) => {
-    setQuiz(name);
+    const quiz = list?.find((q) => q.name === name);
+    if (quiz) {
+      setQuiz({
+        name: quiz.name,
+        description: quiz.description,
+        questions: quiz.questions.length,
+      });
+      toggleOverlay();
+    }
   };
 
   return (
     <div>
-      <h1>Choose your quiz</h1>
+      <h2 className="text-2xl font-semibold text-gray-800 pt-6">
+        Choose your quiz
+      </h2>
       {list ? (
-        <ol>
-          {list.map((el, i) => (
-            <li key={i} onClick={() => handleClick(el.name)}>
-              {el.name}
-            </li>
-          ))}
-        </ol>
+        <>
+          <div className="flex gap-4 pt-3">
+            {list.map((el, i) => (
+              <div
+                key={i}
+                onClick={() => handleClick(el.name)}
+                className="bg-blue-600 hover:bg-blue-800 text-white px-3 py-4 rounded-3xl"
+              >
+                <h3 className="text-xl">{el.name}</h3>
+              </div>
+            ))}
+          </div>
+        </>
       ) : null}
     </div>
   );

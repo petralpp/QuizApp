@@ -49,7 +49,9 @@ const QuizDisplay = ({ currentQuiz, quit }: Props) => {
 
   return (
     <div>
-      <h2>{currentQuiz.name}</h2>
+      <h2 className="text-center mt-2 text-xl font-semibold text-gray-800">
+        {currentQuiz.name}
+      </h2>
       {quizOn ? (
         <QuizQuestion
           index={currentIndex + 1}
@@ -60,8 +62,14 @@ const QuizDisplay = ({ currentQuiz, quit }: Props) => {
       ) : (
         <div>
           <Result playerAnswers={playerAnswers} rightAnswers={correctAnswers} />
-          <button onClick={quit}>Quit</button>
-          <button onClick={handleRestart}>Try again</button>
+          <div className="text-center">
+            <button onClick={quit} className="btn-blue mr-2">
+              Quit
+            </button>
+            <button onClick={handleRestart} className="btn-blue ml-2">
+              Try again
+            </button>
+          </div>
         </div>
       )}
     </div>

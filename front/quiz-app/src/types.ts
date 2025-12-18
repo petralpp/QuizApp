@@ -19,3 +19,9 @@ export interface CorrectAnswer {
   question: string;
   answer: string;
 }
+
+export interface QuizDescription {
+  name: string;
+  description: string;
+  questions: number;
+}

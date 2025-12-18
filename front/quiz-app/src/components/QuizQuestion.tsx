@@ -39,9 +39,13 @@ const QuizQuestion = ({ index, question, options, sendAnswer }: Props) => {
           </div>
         ))}
         {answer ? (
-          <button type="submit">Next</button>
+          <button type="submit" className="btn-blue">
+            Next
+          </button>
         ) : (
-          <button disabled>Next</button>
+          <button disabled className="btn-blue-disabled">
+            Next
+          </button>
         )}
       </form>
     </div>

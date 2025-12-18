@@ -22,19 +22,29 @@ const Result = ({ playerAnswers, rightAnswers }: Props) => {
 
   return (
     <div>
-      <h2>
+      <h2 className="mt-2 text-center">
         Your result: {countResult()} / {playerAnswers.length}
       </h2>
       {showAnswers ? (
         <>
-          <button onClick={() => setShowAnswers(false)}>Hide</button>
+          <button
+            onClick={() => setShowAnswers(false)}
+            className="btn-blue mt-2 text-center"
+          >
+            Hide
+          </button>
           <ResultTable
             correctAnswers={rightAnswers}
             playerAnswers={playerAnswers}
           />
         </>
       ) : (
-        <button onClick={() => setShowAnswers(true)}>Show answers</button>
+        <button
+          onClick={() => setShowAnswers(true)}
+          className="btn-blue mt-2 text-center"
+        >
+          Show answers
+        </button>
       )}
     </div>
   );
