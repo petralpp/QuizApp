@@ -17,7 +17,7 @@ const QuizOverlay = ({ isOpen, onClose, quiz, start }: Props) => {
               <h2 className="text-center font-semibold text-2xl mb-3">
                 {quiz.name}
               </h2>
-              <p>{quiz.description}</p>
+              <p className="text-base md:text-lg lg:text-xl">{quiz.description}</p>
               <p className="mt-4 text-center font-semibold">
                 {quiz.questions} questions
               </p>

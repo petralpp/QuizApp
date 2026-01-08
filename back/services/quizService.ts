@@ -11,7 +11,7 @@ const getAnswers = (id: string): CorrectAnswer[] | null => {
     return null;
   }
   const answerObject = correctAnswers.find(
-    (element) => element.quizzName === quiz.name
+    (element) => element.quizName === quiz.name
   );
   if (answerObject) {
     return answerObject.answers;

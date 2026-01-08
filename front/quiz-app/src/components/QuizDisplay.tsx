@@ -48,7 +48,13 @@ const QuizDisplay = ({ currentQuiz, quit }: Props) => {
   };
 
   return (
-    <div>
+    <div className="bg-white p-3">
+      <button
+        className="px-4 py-2 ml-2 absolute rounded bg-red-500 text-white"
+        onClick={quit}
+      >
+        Quit
+      </button>
       <h2 className="text-center mt-2 text-xl font-semibold text-gray-800">
         {currentQuiz.name}
       </h2>
@@ -62,11 +68,8 @@ const QuizDisplay = ({ currentQuiz, quit }: Props) => {
       ) : (
         <div>
           <Result playerAnswers={playerAnswers} rightAnswers={correctAnswers} />
-          <div className="text-center">
-            <button onClick={quit} className="btn-blue mr-2">
-              Quit
-            </button>
-            <button onClick={handleRestart} className="btn-blue ml-2">
+          <div className="text-center m-4">
+            <button onClick={handleRestart} className="btn-blue">
               Try again
             </button>
           </div>

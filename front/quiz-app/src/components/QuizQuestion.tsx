@@ -21,32 +21,34 @@ const QuizQuestion = ({ index, question, options, sendAnswer }: Props) => {
   };
 
   return (
-    <div>
-      <h3>
+    <div className="flex flex-col items-center">
+      <p className="mt-3 text-base md:text-lg lg:text-xl">
         {index}. {question}
-      </h3>
-      <form onSubmit={handleSubmit}>
+      </p>
+      <form onSubmit={handleSubmit} className="m-2">
         {options.map((option) => (
-          <div key={option}>
-            <label>
+          <div key={option} className="mb-3">
+            <label className="">
               <input
                 type="radio"
                 name="option"
                 onChange={() => handleChange(option)}
               />
-              {option}
+              <p className="inline ml-2 text-base md:text-lg lg:text-xl">{option}</p>
             </label>
           </div>
         ))}
-        {answer ? (
-          <button type="submit" className="btn-blue">
-            Next
-          </button>
-        ) : (
-          <button disabled className="btn-blue-disabled">
-            Next
-          </button>
-        )}
+        <div className="text-center">
+          {answer ? (
+            <button type="submit" className="btn-blue">
+              Next
+            </button>
+          ) : (
+            <button disabled className="btn-blue-disabled">
+              Next
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );

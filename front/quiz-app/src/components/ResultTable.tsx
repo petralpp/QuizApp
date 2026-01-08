@@ -9,25 +9,25 @@ interface Props {
 
 const ResultTable = ({ correctAnswers, playerAnswers }: Props) => {
   return (
-    <table className="w-full my-3 border border-Collapse rounded-sm">
-      <thead className="border">
-        <tr>
-          <td className="border p-3 font-bold">Question</td>
-          <td className="border p-3 font-bold">Correct answer</td>
-          <td className="border p-3 font-bold">Your answer</td>
+    <table className="my-3">
+      <thead className="bg-linear-to-r from-emerald-400 to-sky-500 text-white">
+        <tr className="">
+          <td className="p-3 font-bold border-0 rounded-tl-xl">Question</td>
+          <td className="p-3 font-bold">Correct answer</td>
+          <td className="p-3 font-bold border-0 rounded-tr-xl">Your answer</td>
         </tr>
       </thead>
       <tbody>
         {correctAnswers.map((elem, i) => (
-          <tr key={i}>
-            <td className="border p-2">
+          <tr key={i} className="even:bg-gray-300/50">
+            <td className="p-2">
               {i + 1}. {elem.question}
             </td>
-            <td className="border p-2">{elem.answer}</td>
-            <td className="border p-2">
+            <td className="p-2">{elem.answer}</td>
+            <td className="p-2">
               {playerAnswers[i]}
               {elem.answer.includes(playerAnswers[i]) ? (
-                <CheckCircleIcon className="size-5 text-green-500 inline float-right" />
+                <CheckCircleIcon className="size-5 text-green-500 inline ml-2 float-right" />
               ) : (
                 <XCircleIcon className="size-5 text-red-600 inline float-right" />
               )}
