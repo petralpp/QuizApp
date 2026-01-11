@@ -9,7 +9,7 @@ interface Props {
   quit(): void;
 }
 
-const QuizDisplay = ({ currentQuiz, quit }: Props) => {
+const ActiveQuiz = ({ currentQuiz, quit }: Props) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [playerAnswers, setPlayerAnswers] = useState<string[]>([]);
   const [correctAnswers, setCorrectAnswers] = useState<CorrectAnswer[]>([]);
@@ -48,7 +48,7 @@ const QuizDisplay = ({ currentQuiz, quit }: Props) => {
   };
 
   return (
-    <div className="bg-white p-3">
+    <div className="bg-white h-80 p-3">
       <button
         className="px-4 py-2 ml-2 absolute rounded bg-red-500 text-white"
         onClick={quit}
@@ -79,4 +79,4 @@ const QuizDisplay = ({ currentQuiz, quit }: Props) => {
   );
 };
 
-export default QuizDisplay;
+export default ActiveQuiz;

@@ -3,7 +3,7 @@ import type { Quiz, QuizDescription } from "./types";
 import quizService from "./services/quizService";
 
 import QuizList from "./components/QuizList";
-import QuizDisplay from "./components/QuizDisplay";
+import ActiveQuiz from "./components/ActiveQuiz";
 import QuizOVerlay from "./components/QuizOverlay";
 
 function App() {
@@ -63,15 +63,11 @@ function App() {
 
   return (
     <div className="bg-linear-to-r from-indigo-500 to-purple-500 h-screen font-sans text-lg">
-      <div>
-        <h1 className="text-center text-4xl p-5 mb-2 font-bold text-white leading-tight">
-          Quiz!
-        </h1>
-      </div>
+      <h1 className="text-center text-4xl p-5 mb-2 font-bold text-white leading-tight">
+        Quiz!
+      </h1>
       {currentQuiz ? (
-        <div className="bg-white h-80">
-          <QuizDisplay currentQuiz={currentQuiz} quit={endQuiz} />
-        </div>
+        <ActiveQuiz currentQuiz={currentQuiz} quit={endQuiz} />
       ) : (
         <div className="h-[70vh]">
           <QuizList
@@ -80,16 +76,14 @@ function App() {
             setQuiz={setSelectedQuiz}
             toggleOverlay={toggleOverlay}
           />
-          <div>
-            {selectedQuiz.name !== "" && (
-              <QuizOVerlay
-                isOpen={overlayIsOpen}
-                onClose={toggleOverlay}
-                quiz={selectedQuiz}
-                start={startQuiz}
-              />
-            )}
-          </div>
+          {selectedQuiz.name !== "" && (
+            <QuizOVerlay
+              isOpen={overlayIsOpen}
+              onClose={toggleOverlay}
+              quiz={selectedQuiz}
+              start={startQuiz}
+            />
+          )}
         </div>
       )}
     </div>
