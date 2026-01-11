@@ -3,9 +3,11 @@ import quizService from "../services/quizService";
 
 const router = express.Router();
 
-router.get("/", (_req, res) => {
+router.get("/", async (_req, res) => {
   console.log("Backend: fetching all quizzes!");
-  res.send(quizService.getQuizzes());
+  const q = await quizService.getQuizzes();
+  console.log("Routessa: ", q);
+  res.send(q);
 });
 
 router.post("/", (_req, res) => {

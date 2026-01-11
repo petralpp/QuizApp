@@ -3,13 +3,13 @@ export interface Quiz {
   category: string;
   name: string;
   description: string;
-  questions: QuizQuestions[];
+  questions: object[];
 }
-
+/*
 export interface QuizQuestions {
   question: string;
   choices: string[];
-}
+}*/
 
 export interface CorrectAnswer {
   question: string;

@@ -1,8 +1,10 @@
 import { questions, correctAnswers } from "../quizzData";
-import { Quiz, CorrectAnswer } from "../types";
+import { CorrectAnswer } from "../types";
+import { QuizModel } from "../models/quizModel";
 
-const getQuizzes = (): Quiz[] => {
-  return questions;
+const getQuizzes = async () => {
+  const quizzes = await QuizModel.find({});
+  return quizzes;
 };
 
 const getAnswers = (id: string): CorrectAnswer[] | null => {
