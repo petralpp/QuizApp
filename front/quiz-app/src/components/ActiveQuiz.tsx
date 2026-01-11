@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { CorrectAnswer, Quiz } from "../types";
-import QuizQuestion from "./QuizQuestion";
+import CurrentQuestion from "./CurrentQuestion";
 import quizService from "../services/quizService";
 import Result from "./Result";
 
@@ -59,7 +59,7 @@ const ActiveQuiz = ({ currentQuiz, quit }: Props) => {
         {currentQuiz.name}
       </h2>
       {quizOn ? (
-        <QuizQuestion
+        <CurrentQuestion
           index={currentIndex + 1}
           question={currentQuestion}
           options={currentOptions}

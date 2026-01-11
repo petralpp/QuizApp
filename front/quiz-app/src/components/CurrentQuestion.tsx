@@ -7,7 +7,7 @@ interface Props {
   sendAnswer(answer: string): void;
 }
 
-const QuizQuestion = ({ index, question, options, sendAnswer }: Props) => {
+const CurrentQuestion = ({ index, question, options, sendAnswer }: Props) => {
   const [answer, setAnswer] = useState<string>("");
 
   const handleSubmit = (e: FormEvent) => {
@@ -54,4 +54,4 @@ const QuizQuestion = ({ index, question, options, sendAnswer }: Props) => {
   );
 };
 
-export default QuizQuestion;
+export default CurrentQuestion;
