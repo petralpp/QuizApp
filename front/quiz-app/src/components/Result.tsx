@@ -27,16 +27,10 @@ const Result = ({ playerAnswers, rightAnswers }: Props) => {
       </h2>
       {showAnswers ? (
         <>
-          <button
-            onClick={() => setShowAnswers(false)}
-            className="btn-orange mt-2"
-          >
+          <button onClick={() => setShowAnswers(false)} className="btn-orange mt-2">
             Hide
           </button>
-          <ResultTable
-            correctAnswers={rightAnswers}
-            playerAnswers={playerAnswers}
-          />
+          <ResultTable correctAnswers={rightAnswers} playerAnswers={playerAnswers} />
         </>
       ) : (
         <button onClick={() => setShowAnswers(true)} className="btn-orange m-2">
