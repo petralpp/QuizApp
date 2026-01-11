@@ -12,7 +12,7 @@ const QuizOverlay = ({ isOpen, onClose, quiz, start }: Props) => {
     <>
       {isOpen && (
         <div className="overlay-background" onClick={onClose}>
-          <div className="overlay">
+          <div className="overlay lg:max-w-2/5">
             <div className="mb-4">
               <h2 className="text-center font-semibold text-2xl mb-3">
                 {quiz.name}
