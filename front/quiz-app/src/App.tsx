@@ -11,7 +11,7 @@ function App() {
     category: "",
     name: "",
     description: "",
-    questions: 0,
+    questions: 0
   });
   const [entertainmentData, setEntertainmentData] = useState<Quiz[] | null>(null);
   const [educationData, setEducationData] = useState<Quiz[] | null>(null);
@@ -51,6 +51,7 @@ function App() {
       );
     } else {
       quizElement = educationData.find((quiz) => quiz.name === selectedQuiz.name);
+      console.log(quizElement);
     }
     if (quizElement) {
       setCurrentQuiz(quizElement);

@@ -1,24 +1,14 @@
-import { questions, correctAnswers } from "../quizzData";
-import { CorrectAnswer } from "../types";
 import { QuizModel } from "../models/quizModel";
+import { AnswersModel } from "../models/answersModel";
 
 const getQuizzes = async () => {
   const quizzes = await QuizModel.find({});
   return quizzes;
 };
 
-const getAnswers = (id: string): CorrectAnswer[] | null => {
-  const quiz = questions.find((element) => element.id === id);
-  if (!quiz) {
-    return null;
-  }
-  const answerObject = correctAnswers.find(
-    (element) => element.quizName === quiz.name
-  );
-  if (answerObject) {
-    return answerObject.answers;
-  }
-  return null;
+const getAnswers = async (id: string) => {
+  const answers = await AnswersModel.findById(id);
+  return answers;
 };
 
 export default { getQuizzes, getAnswers };

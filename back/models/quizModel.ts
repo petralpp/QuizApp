@@ -19,15 +19,19 @@ const quizSchema = new Schema<Quiz>({
       type: Object,
       required: true
     }
-  ]
+  ],
+  answersId: {
+    type: String,
+    required: true
+  }
 });
 
+/*
 quizSchema.set("toJSON", {
   transform: (_document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString();
   }
 });
+*/
 
 export const QuizModel = mongoose.model("Quiz", quizSchema);
-
-module.exports = { QuizModel };

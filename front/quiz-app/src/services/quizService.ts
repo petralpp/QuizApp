@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { CorrectAnswer, Quiz } from "../types";
+import type { QuizAnswers, Quiz } from "../types";
 
 const getAllQuizzes = async () => {
   const response = await axios.get<Quiz[]>("/api/quiz");
@@ -7,7 +7,7 @@ const getAllQuizzes = async () => {
 };
 
 const getAnswers = async (id: string) => {
-  const response = await axios.get<CorrectAnswer[]>(`/api/quiz/${id}`);
+  const response = await axios.get<QuizAnswers>(`/api/quiz/${id}`);
   return response.data;
 };
 
