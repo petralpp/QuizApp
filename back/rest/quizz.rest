@@ -2,7 +2,19 @@ GET http://localhost:3000/api/quiz
 
 ###
 
-GET http://localhost:3000/api/quiz/f4b3fb69-0918-4838-b01e-075bc9fccdd9
+GET http://localhost:3000/api/quiz/answers/6968bfec4f5c5db0923a700e
+
+###
+
+GET http://localhost:3000/api/quiz/answers/6968bfec4f5c5db0923a800e
+
+###
+
+GET http://localhost:3000/api/quiz/answers/6968bfec4f5c5db0923a
+
+###
+
+GET http://localhost:3000/what
 
 ###
 

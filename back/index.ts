@@ -2,6 +2,7 @@ import express from "express";
 import quizRouter from "./routes/quiz";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import { unknownEndpoint, errorMiddleware } from "./services/middleware";
 
 dotenv.config();
 const app = express();
@@ -31,6 +32,8 @@ app.get("/ping", (_req, res) => {
 });
 
 app.use("/api/quiz", quizRouter);
+app.use(unknownEndpoint);
+app.use(errorMiddleware);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

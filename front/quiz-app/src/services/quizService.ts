@@ -7,7 +7,7 @@ const getAllQuizzes = async () => {
 };
 
 const getAnswers = async (id: string) => {
-  const response = await axios.get<QuizAnswers>(`/api/quiz/${id}`);
+  const response = await axios.get<QuizAnswers>(`/api/quiz/answers/${id}`);
   return response.data;
 };
 
