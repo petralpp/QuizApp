@@ -4,18 +4,15 @@ import stylistic from "@stylistic/eslint-plugin";
 
 export default tseslint.config({
   files: ["**/*.ts"],
-  extends: [
-    eslint.configs.recommended,
-    ...tseslint.configs.recommendedTypeChecked,
-  ],
+  extends: [eslint.configs.recommended, ...tseslint.configs.recommendedTypeChecked],
   languageOptions: {
     parserOptions: {
       project: true,
-      tsconfigRootDir: import.meta.dirname,
-    },
+      tsconfigRootDir: import.meta.dirname
+    }
   },
   plugins: {
-    "@stylistic": stylistic,
+    "@stylistic": stylistic
   },
   rules: {
     "@stylistic/semi": "error",
@@ -25,6 +22,16 @@ export default tseslint.config({
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/restrict-plus-operands": "off",
-    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }]
   },
+  overrides: [
+    {
+      files: ["**/*.test.ts", "**/*.spec.ts"],
+      rules: {
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-call": "off"
+      }
+    }
+  ]
 });

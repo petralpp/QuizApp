@@ -2,13 +2,16 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     "target": "ES6",
+    "rootDir": "src",
     "outDir": "./build/",
     "module": "commonjs",
+    "types": ["node", "jest"],
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true
-  }
+  },
+  "include": ["src/**/*.ts", "src/tests/*.test.ts"]
 }
