@@ -19,6 +19,20 @@ describe("Quiz router", () => {
       answers: expect.any(Array)
     });
   });
+  it("GET /api/quiz/answers/:id should return 'not found' with wrong id", async () => {
+    const response = await request(app).get(
+      "/api/quiz/answers/6968bfec4f5c5db0923a800e"
+    );
+    expect(response.status).toBe(404);
+    expect(response.text).toBe("Quiz not found");
+  });
+  it("GET /api/quiz/answers/:id should fail with malformatted id", async () => {
+    const response = await request(app).get(
+      "/api/quiz/answers/6968bfec4f5c5db0923a"
+    );
+    expect(response.status).toBe(400);
+    expect(response.text).toMatch(/Malformatted id/);
+  });
 });
 
 afterAll(async () => {
