@@ -38,7 +38,9 @@ const ActiveQuiz = ({ currentQuiz, quit }: Props) => {
 
   const getResults = async () => {
     const rightAnswers = await quizService.getAnswers(currentQuiz.answersId);
-    setCorrectAnswers(rightAnswers.answers);
+    if (rightAnswers) {
+      setCorrectAnswers(rightAnswers.answers);
+    }
   };
 
   const handleRestart = () => {

@@ -26,7 +26,7 @@ const ResultTable = ({ correctAnswers, playerAnswers }: Props) => {
             <td className="p-2">{elem.answer}</td>
             <td className="p-2">
               {playerAnswers[i]}
-              {elem.answer.includes(playerAnswers[i]) ? (
+              {elem.answer === playerAnswers[i] ? (
                 <CheckCircleIcon className="size-5 text-green-500 inline ml-2 float-right" />
               ) : (
                 <XCircleIcon className="size-5 text-red-600 inline float-right" />
