@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     quizService.getAllQuizzes().then((data) => {
-      handleData(data);
+      if (data) handleData(data);
     });
   }, []);
 
