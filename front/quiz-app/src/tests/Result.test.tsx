@@ -1,4 +1,3 @@
-import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Result from "../components/Result";
@@ -16,17 +15,17 @@ describe("Result component", () => {
   it("displays the correct numeral result", () => {
     const resultText = screen.getByText("Your result: 2 / 3", { exact: false });
     expect(resultText).toBeInTheDocument();
-    const showButton = screen.getByText("Show answers");
+    const showButton = screen.getByRole("button", { name: "Show answers" });
     expect(showButton).toBeInTheDocument();
   });
   it("displays the correct buttons", async () => {
-    const showButton = screen.getByText("Show answers");
+    const showButton = screen.getByRole("button", { name: "Show answers" });
     expect(showButton).toBeInTheDocument();
 
     const user = userEvent.setup();
     await user.click(showButton);
 
-    const hideButton = screen.getByText("Hide");
+    const hideButton = screen.getByRole("button", { name: "Hide" });
     expect(hideButton).toBeInTheDocument();
   });
   it("doesn't render the ResultTable component before a button click", () => {
@@ -34,11 +33,11 @@ describe("Result component", () => {
     expect(tableCell).not.toBeInTheDocument();
   });
   it("displays the ResultTable component after a button click", async () => {
-    const showButton = screen.getByText("Show answers");
+    const showButton = screen.getByRole("button", { name: "Show answers" });
+
     const user = userEvent.setup();
     await user.click(showButton);
 
-    screen.debug();
     const tableCell = screen.getByText("Question");
     expect(tableCell).toBeInTheDocument();
   });

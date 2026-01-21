@@ -2,6 +2,12 @@ import { type CorrectAnswer } from "../types";
 
 /* Data for testing components */
 
+const testQuestions: string[] = [
+  "What year was this test data made?",
+  "Should this one be wrong?",
+  "Is this the final one?"
+];
+
 const testCorrectAnswers: CorrectAnswer[] = [
   {
     question: "What year was this test data made?",
@@ -19,4 +25,4 @@ const testCorrectAnswers: CorrectAnswer[] = [
 
 const testPlayerAnswers: string[] = ["2026", "No", "Maybe"];
 
-export default { testCorrectAnswers, testPlayerAnswers };
+export default { testQuestions, testCorrectAnswers, testPlayerAnswers };
