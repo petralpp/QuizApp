@@ -5,11 +5,10 @@ import CategorySection from "../components/CategorySection";
 import type { Mock, Procedure } from "@vitest/spy";
 
 const testData = testUtils.getSeparatedData();
-let mockHandler: Mock<Procedure>;
+const mockHandler: Mock<Procedure> = vi.fn();
 
 describe("CategorySection component", () => {
   beforeEach(() => {
-    mockHandler = vi.fn();
     render(
       <CategorySection
         quizList={testData.education}
