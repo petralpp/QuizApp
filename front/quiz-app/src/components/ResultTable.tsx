@@ -1,13 +1,16 @@
+import { useAppSelector } from "../hooks";
 import type { CorrectAnswer } from "../types";
 import { CheckCircleIcon } from "@heroicons/react/16/solid";
 import { XCircleIcon } from "@heroicons/react/16/solid";
 
-interface Props {
-  correctAnswers: CorrectAnswer[];
-  playerAnswers: string[];
-}
+const ResultTable = () => {
+  const playerAnswers: string[] = useAppSelector(
+    (state) => state.answers.playerAnswers
+  );
+  const rightAnswers: CorrectAnswer[] = useAppSelector(
+    (state) => state.answers.rightAnswers
+  );
 
-const ResultTable = ({ correctAnswers, playerAnswers }: Props) => {
   return (
     <table className="my-3">
       <thead className="bg-linear-to-r from-emerald-400 to-sky-500 text-white">
@@ -18,7 +21,7 @@ const ResultTable = ({ correctAnswers, playerAnswers }: Props) => {
         </tr>
       </thead>
       <tbody>
-        {correctAnswers.map((elem, i) => (
+        {rightAnswers.map((elem, i) => (
           <tr key={i} className="even:bg-gray-300/50">
             <td className="p-2">
               {i + 1}. {elem.question}

@@ -1,19 +1,21 @@
 import { useState } from "react";
 import type { CorrectAnswer } from "../types";
 import ResultTable from "./ResultTable";
+import { useAppSelector } from "../hooks";
 
-interface Props {
-  playerAnswers: string[];
-  rightAnswers: CorrectAnswer[];
-}
-
-const Result = ({ playerAnswers, rightAnswers }: Props) => {
+const Result = () => {
   const [showAnswers, setShowAnswers] = useState<boolean>(false);
+  const playerAnswers: string[] = useAppSelector(
+    (state) => state.answers.playerAnswers
+  );
+  const rightAnswers: CorrectAnswer[] = useAppSelector(
+    (state) => state.answers.rightAnswers
+  );
 
   const countResult = () => {
     let correct = 0;
     for (let i = 0; i < rightAnswers.length; i++) {
-      if (Object.values(rightAnswers[i]).includes(playerAnswers[i])) {
+      if (rightAnswers[i].answer === playerAnswers[i]) {
         correct++;
       }
     }
@@ -30,7 +32,7 @@ const Result = ({ playerAnswers, rightAnswers }: Props) => {
           <button onClick={() => setShowAnswers(false)} className="btn-orange mt-2">
             Hide
           </button>
-          <ResultTable correctAnswers={rightAnswers} playerAnswers={playerAnswers} />
+          <ResultTable />
         </>
       ) : (
         <button onClick={() => setShowAnswers(true)} className="btn-orange m-2">

@@ -1,11 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import entertainmentReducer from "./reducers/entertainmentReducer";
 import educationReducer from "./reducers/educationReducer";
+import selectedQuizReducer from "./reducers/selectedQuizReducer";
+import activeQuizReducer from "./reducers/activeQuizReducer";
+import answersReducer from "./reducers/answersReducer";
 
 export const store = configureStore({
   reducer: {
     entertainmentQuizzes: entertainmentReducer,
-    educationQuizzes: educationReducer
+    educationQuizzes: educationReducer,
+    selectedQuiz: selectedQuizReducer,
+    activeQuiz: activeQuizReducer,
+    answers: answersReducer
   }
 });
 

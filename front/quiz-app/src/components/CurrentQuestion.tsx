@@ -1,18 +1,43 @@
-import { useState, type FormEvent } from "react";
+import {
+  useState,
+  type SetStateAction,
+  type Dispatch,
+  type FormEvent,
+  useEffect
+} from "react";
+import { useAppSelector, useAppDispatch } from "../hooks";
+import type { Quiz } from "../types";
+import { setPlayerAnswer, getRightAnswers } from "../reducers/answersReducer";
 
 interface Props {
-  index: number;
-  question: string;
-  options: string[];
-  sendAnswer(answer: string): void;
+  setQuizState: Dispatch<SetStateAction<boolean>>;
 }
 
-const CurrentQuestion = ({ index, question, options, sendAnswer }: Props) => {
+const CurrentQuestion = ({ setQuizState }: Props) => {
+  const dispatch = useAppDispatch();
   const [answer, setAnswer] = useState<string>("");
+  const activeQuiz: Quiz = useAppSelector((state) => state.activeQuiz.quiz);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentQuestion, setCurrentQuestion] = useState<string>("");
+  const [currentOptions, setCurrentOptions] = useState<string[]>([]);
 
-  const handleSubmit = (e: FormEvent) => {
+  useEffect(() => {
+    const question = activeQuiz.questions[currentIndex].question;
+    const options = activeQuiz.questions[currentIndex].choices;
+    setCurrentQuestion(question);
+    setCurrentOptions(options);
+  }, [activeQuiz, currentIndex]);
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    sendAnswer(answer);
+    dispatch(setPlayerAnswer(answer));
+    const index = currentIndex + 1;
+    if (index === activeQuiz.questions.length) {
+      dispatch(getRightAnswers(activeQuiz.answersId));
+      setQuizState(false);
+    } else {
+      setCurrentIndex(index);
+    }
     setAnswer("");
   };
 
@@ -23,10 +48,10 @@ const CurrentQuestion = ({ index, question, options, sendAnswer }: Props) => {
   return (
     <div className="flex flex-col items-center">
       <p className="mt-3 text-base md:text-lg lg:text-xl">
-        {index}. {question}
+        {currentIndex + 1}. {currentQuestion}
       </p>
       <form onSubmit={handleSubmit} className="m-2">
-        {options.map((option) => (
+        {currentOptions.map((option) => (
           <div key={option} className="mb-3">
             <label className="">
               <input

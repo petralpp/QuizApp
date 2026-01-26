@@ -1,14 +1,14 @@
-import type { Dispatch, SetStateAction } from "react";
-import type { Quiz, QuizDescription } from "../types";
-import { useAppSelector } from "../hooks";
+import type { Quiz } from "../types";
+import { useAppSelector, useAppDispatch } from "../hooks";
+import { setSelectedQuiz } from "../reducers/selectedQuizReducer";
 import CategorySection from "./CategorySection";
 
 interface Props {
-  setQuiz: Dispatch<SetStateAction<QuizDescription>>;
   toggleOverlay(): void;
 }
 
-const QuizList = ({ setQuiz, toggleOverlay }: Props) => {
+const QuizList = ({ toggleOverlay }: Props) => {
+  const dispatch = useAppDispatch();
   const entertainmentList: Quiz[] = useAppSelector(
     (state) => state.entertainmentQuizzes
   );
@@ -22,12 +22,14 @@ const QuizList = ({ setQuiz, toggleOverlay }: Props) => {
       quiz = educationList?.find((q) => q.name === name);
     }
     if (quiz) {
-      setQuiz({
-        category: quiz.category,
-        name: quiz.name,
-        description: quiz.description,
-        questions: quiz.questions.length
-      });
+      dispatch(
+        setSelectedQuiz({
+          category: quiz.category,
+          name: quiz.name,
+          description: quiz.description,
+          questions: quiz.questions.length
+        })
+      );
       toggleOverlay();
     }
   };
