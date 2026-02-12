@@ -1,15 +1,20 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import ResultTable from "../components/ResultTable";
-import testData from "./test_utils";
+import testData from "./test_data";
+import { setupStore } from "../store";
+import { setPlayerAnswer, setRightAnswers } from "../reducers/answersReducer";
+import { renderWithProviders } from "./test_utils";
 
 describe("ResultTable component", () => {
   beforeEach(() => {
-    render(
-      <ResultTable
-        correctAnswers={testData.testCorrectAnswers}
-        playerAnswers={testData.testPlayerAnswers}
-      />
-    );
+    const store = setupStore();
+    const playerAnswers = testData.testPlayerAnswers;
+    const correctAnswers = testData.testCorrectAnswers;
+    store.dispatch(setRightAnswers(correctAnswers));
+    for (const answer of playerAnswers) {
+      store.dispatch(setPlayerAnswer(answer));
+    }
+    renderWithProviders(<ResultTable />, store);
   });
   it("displays the table head correctly", () => {
     const questionText = screen.getByText("Question");

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import testUtils from "./test_utils";
+import testUtils from "./test_data";
 import CategorySection from "../components/CategorySection";
 import type { Mock, Procedure } from "@vitest/spy";
 

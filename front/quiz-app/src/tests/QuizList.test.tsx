@@ -1,26 +1,26 @@
-import { render, screen } from "@testing-library/react";
-//import userEvent from "@testing-library/user-event";
-import testUtils from "./test_utils";
+import { screen } from "@testing-library/react";
+import testUtils from "./test_data";
 import QuizList from "../components/QuizList";
 import type { Mock, Procedure } from "@vitest/spy";
+import { renderWithProviders } from "./test_utils";
+import { setupStore } from "../store";
+import { setEntertainmentList } from "../reducers/entertainmentReducer";
+import { setEducationList } from "../reducers/educationReducer";
 
 const testData = testUtils.getSeparatedData();
-const changeQuizHandler: Mock<Procedure> = vi.fn();
 const overlayHandler: Mock<Procedure> = vi.fn();
 
 describe("QuizList component", () => {
   beforeEach(() => {
-    render(
-      <QuizList
-        entertainmentList={testData.entertainment}
-        educationList={testData.education}
-        setQuiz={changeQuizHandler}
-        toggleOverlay={overlayHandler}
-      />
-    );
+    const store = setupStore();
+    const entertainmentList = testData.entertainment;
+    const educationList = testData.education;
+    store.dispatch(setEntertainmentList(entertainmentList));
+    store.dispatch(setEducationList(educationList));
+
+    renderWithProviders(<QuizList toggleOverlay={overlayHandler} />, store);
   });
   it("renders child components", () => {
-    screen.debug();
     expect(screen.getByText("Entertainment")).toBeInTheDocument();
     expect(screen.getByText("Education")).toBeInTheDocument();
     expect(screen.getByText("Movie Classics")).toBeInTheDocument();

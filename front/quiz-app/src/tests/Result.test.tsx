@@ -1,16 +1,21 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Result from "../components/Result";
-import testData from "./test_utils";
+import testData from "./test_data";
+import { setPlayerAnswer, setRightAnswers } from "../reducers/answersReducer";
+import { renderWithProviders } from "./test_utils";
+import { setupStore } from "../store";
 
 describe("Result component", () => {
   beforeEach(() => {
-    render(
-      <Result
-        playerAnswers={testData.testPlayerAnswers}
-        rightAnswers={testData.testCorrectAnswers}
-      />
-    );
+    const store = setupStore();
+    const playerAnswers = testData.testPlayerAnswers;
+    const correctAnswers = testData.testCorrectAnswers;
+    store.dispatch(setRightAnswers(correctAnswers));
+    for (const answer of playerAnswers) {
+      store.dispatch(setPlayerAnswer(answer));
+    }
+    renderWithProviders(<Result />, store);
   });
   it("displays the correct numeral result", () => {
     const resultText = screen.getByText("Your result: 2 / 3", { exact: false });
